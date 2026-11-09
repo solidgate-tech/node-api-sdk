@@ -20,11 +20,11 @@ import { mapValues } from '../runtime';
  */
 export interface SearchInvoicesRequestAllOfFiltersCustomerEmail {
     /**
-     * Comparison operator.
+     * Comparison operator. Use `EQ` to match the whole email, or `STARTS_WITH` to match emails that start with the given value. Both ignore case.
      */
     operator: SearchInvoicesRequestAllOfFiltersCustomerEmailOperatorEnum;
     /**
-     * Email of the customer the invoice was issued to. Exact, case-sensitive match.
+     * Email of the customer the invoice was issued to, or its beginning for `STARTS_WITH`. Leading and trailing spaces are ignored.
      */
     value: string;
 }
@@ -35,6 +35,7 @@ export interface SearchInvoicesRequestAllOfFiltersCustomerEmail {
  */
 export const SearchInvoicesRequestAllOfFiltersCustomerEmailOperatorEnum = {
     Eq: 'EQ',
+    StartsWith: 'STARTS_WITH',
 } as const;
 export type SearchInvoicesRequestAllOfFiltersCustomerEmailOperatorEnum = typeof SearchInvoicesRequestAllOfFiltersCustomerEmailOperatorEnum[keyof typeof SearchInvoicesRequestAllOfFiltersCustomerEmailOperatorEnum];
 
@@ -44,8 +45,6 @@ export type SearchInvoicesRequestAllOfFiltersCustomerEmailOperatorEnum = typeof 
  */
 export function instanceOfSearchInvoicesRequestAllOfFiltersCustomerEmail(value: object): value is SearchInvoicesRequestAllOfFiltersCustomerEmail {
     if (!('operator' in value) || value['operator'] === undefined) return false;
-    if (value['operator'] !== 'EQ') return false;
-    
     if (!('value' in value) || value['value'] === undefined) return false;
     return true;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@solidgate/node-api-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Solidgate Public API v2 client for Node.js",
   "keywords": [
     "solidgate",
