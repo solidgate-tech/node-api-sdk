@@ -1,0 +1,66 @@
+{
+  "name": "@solidgate/node-api-sdk",
+  "version": "0.1.0",
+  "description": "Solidgate Public API v2 client for Node.js",
+  "keywords": [
+    "solidgate",
+    "payments",
+    "sdk",
+    "api"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solidgate-tech/node-api-sdk.git"
+  },
+  "homepage": "https://github.com/solidgate-tech/node-api-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/solidgate-tech/node-api-sdk/issues"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true,
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "build:test": "tsc -p tsconfig.test.json",
+    "test": "pnpm run test:unit",
+    "test:unit": "pnpm run build:test && node -e \"require('fs').mkdirSync('build/test-results',{recursive:true})\" && node --test --test-reporter=spec --test-reporter-destination=stdout --test-reporter=junit --test-reporter-destination=build/test-results/junit-report.xml \"dist-test/test/unit/**/*.test.js\"",
+    "test:smoke": "sh scripts/smoke.sh",
+    "test:codegen": "pnpm run build:test && node --test --test-reporter=spec \"dist-test/test/codegen/**/*.test.js\"",
+    "test:pack": "sh scripts/pack-test.sh",
+    "api:report": "node -e \"require('fs').mkdirSync('etc',{recursive:true})\" && api-extractor run --local --verbose",
+    "api:check": "api-extractor run --verbose",
+    "lint": "prettier --check . && eslint .",
+    "format": "prettier --write . && eslint . --fix"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@microsoft/api-extractor": "^7.47.0",
+    "@types/node": "^22.0.0",
+    "eslint": "^10.13.0",
+    "eslint-formatter-compact": "^9.0.1",
+    "prettier": "^3.9.0",
+    "typescript": "~5.6.0",
+    "typescript-eslint": "^8.72.0",
+    "yaml": "^2.9.1"
+  },
+  "packageManager": "pnpm@12.16.1+sha512.091d1dee7927575661b25dab3c2ae31cafc1c54d6b71ed6a6600cf0c1cb10434a447eae14015f1b23e2e6bedeed79df94a932e2164d2832280dce3fb32f656d1"
+}

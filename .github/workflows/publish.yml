@@ -1,0 +1,75 @@
+# Publishes @solidgate/node-api-sdk to npm for every v* tag the GitLab job daily-release pushes here.
+# This repo holds only the package's public files; each release commit already carries its version in
+# package.json and src/version.ts. Tests and checks ran in GitLab on the same source before the tag.
+# npm trusted publishing (OIDC): no npm token is stored; the package's npm settings trust this
+# workflow file and the "npm" environment. Provenance links each version to this run.
+name: publish
+
+on:
+  push:
+    tags: ['v[0-9]+.[0-9]+.[0-9]+']
+
+permissions: {}
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      contents: write # the GitHub Release
+      id-token: write # npm trusted publishing and provenance
+    env:
+      TAG: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: The tag is on master and matches package.json
+        run: |
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/master || {
+            echo "::error::$TAG is not on master: not published"
+            exit 1
+          }
+          version=$(node -p "require('./package.json').version")
+          test "v$version" = "$TAG" || {
+            echo "::error::package.json says $version, the tag $TAG: not published"
+            exit 1
+          }
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24
+
+      - name: npm (trusted publishing needs 11.5.1+) and pnpm (packageManager in package.json)
+        run: npm install --global --ignore-scripts npm@11.21.1 "pnpm@$(node -p "require('./package.json').packageManager.split('@')[1].split('+')[0]")"
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: |
+          pnpm run build
+          test "$(node -p "require('./dist/version.js').SDK_VERSION")" = "${TAG#v}"
+
+      - name: Publish to npm
+        run: |
+          name=$(node -p "require('./package.json').name")
+          if npm view "$name@${TAG#v}" version > /dev/null 2>&1; then
+            echo "$name@${TAG#v} is already on npm"
+          else
+            npm publish
+          fi
+
+      - name: GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view "$TAG" > /dev/null 2>&1; then
+            git tag --list --format='%(contents)' "$TAG" > "$RUNNER_TEMP/notes.md"
+            gh release create "$TAG" --title "$TAG" --notes-file "$RUNNER_TEMP/notes.md" --verify-tag
+          fi
