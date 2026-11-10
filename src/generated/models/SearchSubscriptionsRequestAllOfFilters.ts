@@ -27,13 +27,6 @@ import {
     SearchSubscriptionsRequestAllOfFiltersProductPriceIdToJSON,
     SearchSubscriptionsRequestAllOfFiltersProductPriceIdToJSONTyped,
 } from './SearchSubscriptionsRequestAllOfFiltersProductPriceId';
-import type { SearchSubscriptionsRequestAllOfFiltersCustomerEmail } from './SearchSubscriptionsRequestAllOfFiltersCustomerEmail';
-import {
-    SearchSubscriptionsRequestAllOfFiltersCustomerEmailFromJSON,
-    SearchSubscriptionsRequestAllOfFiltersCustomerEmailFromJSONTyped,
-    SearchSubscriptionsRequestAllOfFiltersCustomerEmailToJSON,
-    SearchSubscriptionsRequestAllOfFiltersCustomerEmailToJSONTyped,
-} from './SearchSubscriptionsRequestAllOfFiltersCustomerEmail';
 import type { DateTimeFilter } from './DateTimeFilter';
 import {
     DateTimeFilterFromJSON,
@@ -41,6 +34,13 @@ import {
     DateTimeFilterToJSON,
     DateTimeFilterToJSONTyped,
 } from './DateTimeFilter';
+import type { EmailFilter } from './EmailFilter';
+import {
+    EmailFilterFromJSON,
+    EmailFilterFromJSONTyped,
+    EmailFilterToJSON,
+    EmailFilterToJSONTyped,
+} from './EmailFilter';
 import type { SearchSubscriptionsRequestAllOfFiltersProductId } from './SearchSubscriptionsRequestAllOfFiltersProductId';
 import {
     SearchSubscriptionsRequestAllOfFiltersProductIdFromJSON,
@@ -71,9 +71,9 @@ export interface SearchSubscriptionsRequestAllOfFilters {
      */
     customer_id?: SearchSubscriptionsRequestAllOfFiltersCustomerId;
     /**
-     * 
+     * Operator and value for the email address of the customer who owns the subscriptions.
      */
-    customer_email?: SearchSubscriptionsRequestAllOfFiltersCustomerEmail;
+    customer_email?: EmailFilter;
     /**
      * 
      */
@@ -108,7 +108,7 @@ export function SearchSubscriptionsRequestAllOfFiltersFromJSONTyped(json: any, i
         
         'status': json['status'] == null ? undefined : SearchSubscriptionsRequestAllOfFiltersStatusFromJSON(json['status']),
         'customer_id': json['customer_id'] == null ? undefined : SearchSubscriptionsRequestAllOfFiltersCustomerIdFromJSON(json['customer_id']),
-        'customer_email': json['customer_email'] == null ? undefined : SearchSubscriptionsRequestAllOfFiltersCustomerEmailFromJSON(json['customer_email']),
+        'customer_email': json['customer_email'] == null ? undefined : EmailFilterFromJSON(json['customer_email']),
         'product_id': json['product_id'] == null ? undefined : SearchSubscriptionsRequestAllOfFiltersProductIdFromJSON(json['product_id']),
         'product_price_id': json['product_price_id'] == null ? undefined : SearchSubscriptionsRequestAllOfFiltersProductPriceIdFromJSON(json['product_price_id']),
         'created_at': json['created_at'] == null ? undefined : DateTimeFilterFromJSON(json['created_at']),
@@ -128,7 +128,7 @@ export function SearchSubscriptionsRequestAllOfFiltersToJSONTyped(value?: Search
         
         'status': SearchSubscriptionsRequestAllOfFiltersStatusToJSON(value['status']),
         'customer_id': SearchSubscriptionsRequestAllOfFiltersCustomerIdToJSON(value['customer_id']),
-        'customer_email': SearchSubscriptionsRequestAllOfFiltersCustomerEmailToJSON(value['customer_email']),
+        'customer_email': EmailFilterToJSON(value['customer_email']),
         'product_id': SearchSubscriptionsRequestAllOfFiltersProductIdToJSON(value['product_id']),
         'product_price_id': SearchSubscriptionsRequestAllOfFiltersProductPriceIdToJSON(value['product_price_id']),
         'created_at': DateTimeFilterToJSON(value['created_at']),

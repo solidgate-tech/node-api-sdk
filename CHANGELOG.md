@@ -2,6 +2,17 @@
 
 All notable changes to this package are documented in this file.
 
+## [0.1.2] - 2026-11-10
+
+- [`POST /invoices/search`](https://api-docs.solidgate.com/api/v2/invoices/search-invoices):
+  - Removed the request property `allOf[subschema #1]/filters/customer_email/operator`.
+  - Removed the request property `allOf[subschema #1]/filters/customer_email/value`.
+  - Added `subschema #1: Email equals, subschema #2: Email starts with` to the `allOf[subschema #1]/filters/customer_email` request property `oneOf` list.
+- [`POST /subscriptions/search`](https://api-docs.solidgate.com/api/v2/subscriptions/search-subscriptions):
+  - Removed the request property `allOf[subschema #1]/filters/customer_email/operator`.
+  - Removed the request property `allOf[subschema #1]/filters/customer_email/value`.
+  - Added `subschema #1: Email equals, subschema #2: Email starts with` to the `allOf[subschema #1]/filters/customer_email` request property `oneOf` list.
+
 ## [0.1.1] - 2026-11-09
 
 - [`POST /invoices/search`](https://api-docs.solidgate.com/api/v2/invoices/search-invoices):

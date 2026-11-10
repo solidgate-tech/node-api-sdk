@@ -20,13 +20,6 @@ import {
     SearchInvoicesRequestAllOfFiltersStatusToJSON,
     SearchInvoicesRequestAllOfFiltersStatusToJSONTyped,
 } from './SearchInvoicesRequestAllOfFiltersStatus';
-import type { SearchInvoicesRequestAllOfFiltersCustomerEmail } from './SearchInvoicesRequestAllOfFiltersCustomerEmail';
-import {
-    SearchInvoicesRequestAllOfFiltersCustomerEmailFromJSON,
-    SearchInvoicesRequestAllOfFiltersCustomerEmailFromJSONTyped,
-    SearchInvoicesRequestAllOfFiltersCustomerEmailToJSON,
-    SearchInvoicesRequestAllOfFiltersCustomerEmailToJSONTyped,
-} from './SearchInvoicesRequestAllOfFiltersCustomerEmail';
 import type { DateTimeFilter } from './DateTimeFilter';
 import {
     DateTimeFilterFromJSON,
@@ -34,6 +27,13 @@ import {
     DateTimeFilterToJSON,
     DateTimeFilterToJSONTyped,
 } from './DateTimeFilter';
+import type { EmailFilter } from './EmailFilter';
+import {
+    EmailFilterFromJSON,
+    EmailFilterFromJSONTyped,
+    EmailFilterToJSON,
+    EmailFilterToJSONTyped,
+} from './EmailFilter';
 import type { ListInvoicesRequestAllOfFiltersCustomerId } from './ListInvoicesRequestAllOfFiltersCustomerId';
 import {
     ListInvoicesRequestAllOfFiltersCustomerIdFromJSON,
@@ -64,9 +64,9 @@ export interface SearchInvoicesRequestAllOfFilters {
      */
     customer_id?: ListInvoicesRequestAllOfFiltersCustomerId;
     /**
-     * 
+     * Operator and value for the email address of the customer the invoice was issued to.
      */
-    customer_email?: SearchInvoicesRequestAllOfFiltersCustomerEmail;
+    customer_email?: EmailFilter;
     /**
      * 
      */
@@ -101,7 +101,7 @@ export function SearchInvoicesRequestAllOfFiltersFromJSONTyped(json: any, ignore
         
         'status': json['status'] == null ? undefined : SearchInvoicesRequestAllOfFiltersStatusFromJSON(json['status']),
         'customer_id': json['customer_id'] == null ? undefined : ListInvoicesRequestAllOfFiltersCustomerIdFromJSON(json['customer_id']),
-        'customer_email': json['customer_email'] == null ? undefined : SearchInvoicesRequestAllOfFiltersCustomerEmailFromJSON(json['customer_email']),
+        'customer_email': json['customer_email'] == null ? undefined : EmailFilterFromJSON(json['customer_email']),
         'subscription_id': json['subscription_id'] == null ? undefined : ListInvoicesRequestAllOfFiltersSubscriptionIdFromJSON(json['subscription_id']),
         'created_at': json['created_at'] == null ? undefined : DateTimeFilterFromJSON(json['created_at']),
         'due_at': json['due_at'] == null ? undefined : DateTimeFilterFromJSON(json['due_at']),
@@ -121,7 +121,7 @@ export function SearchInvoicesRequestAllOfFiltersToJSONTyped(value?: SearchInvoi
         
         'status': SearchInvoicesRequestAllOfFiltersStatusToJSON(value['status']),
         'customer_id': ListInvoicesRequestAllOfFiltersCustomerIdToJSON(value['customer_id']),
-        'customer_email': SearchInvoicesRequestAllOfFiltersCustomerEmailToJSON(value['customer_email']),
+        'customer_email': EmailFilterToJSON(value['customer_email']),
         'subscription_id': ListInvoicesRequestAllOfFiltersSubscriptionIdToJSON(value['subscription_id']),
         'created_at': DateTimeFilterToJSON(value['created_at']),
         'due_at': DateTimeFilterToJSON(value['due_at']),

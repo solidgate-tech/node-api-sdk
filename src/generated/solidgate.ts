@@ -267,6 +267,11 @@ export namespace Solidgate {
     export import DownloadReport422Response = models.DownloadReport422Response;
     export import DownloadReport422ResponseCodeEnum = models.DownloadReport422ResponseCodeEnum;
     export import DownloadReportRequest = models.DownloadReportRequest;
+    export import EmailFilter = models.EmailFilter;
+    export import EmailFilterEq = models.EmailFilterEq;
+    export import EmailFilterEqOperatorEnum = models.EmailFilterEqOperatorEnum;
+    export import EmailFilterStartsWith = models.EmailFilterStartsWith;
+    export import EmailFilterStartsWithOperatorEnum = models.EmailFilterStartsWithOperatorEnum;
     export import EventEnvelope = models.EventEnvelope;
     export import FinalizeInvoice422Response = models.FinalizeInvoice422Response;
     export import FinalizeInvoice422ResponseCodeEnum = models.FinalizeInvoice422ResponseCodeEnum;
@@ -579,15 +584,11 @@ export namespace Solidgate {
     export import RoutingConfigVersionPublishedEventModelData = models.RoutingConfigVersionPublishedEventModelData;
     export import SearchInvoicesRequest = models.SearchInvoicesRequest;
     export import SearchInvoicesRequestAllOfFilters = models.SearchInvoicesRequestAllOfFilters;
-    export import SearchInvoicesRequestAllOfFiltersCustomerEmail = models.SearchInvoicesRequestAllOfFiltersCustomerEmail;
-    export import SearchInvoicesRequestAllOfFiltersCustomerEmailOperatorEnum = models.SearchInvoicesRequestAllOfFiltersCustomerEmailOperatorEnum;
     export import SearchInvoicesRequestAllOfFiltersStatus = models.SearchInvoicesRequestAllOfFiltersStatus;
     export import SearchInvoicesRequestAllOfFiltersStatusOperatorEnum = models.SearchInvoicesRequestAllOfFiltersStatusOperatorEnum;
     export import SearchInvoicesResponse = models.SearchInvoicesResponse;
     export import SearchSubscriptionsRequest = models.SearchSubscriptionsRequest;
     export import SearchSubscriptionsRequestAllOfFilters = models.SearchSubscriptionsRequestAllOfFilters;
-    export import SearchSubscriptionsRequestAllOfFiltersCustomerEmail = models.SearchSubscriptionsRequestAllOfFiltersCustomerEmail;
-    export import SearchSubscriptionsRequestAllOfFiltersCustomerEmailOperatorEnum = models.SearchSubscriptionsRequestAllOfFiltersCustomerEmailOperatorEnum;
     export import SearchSubscriptionsRequestAllOfFiltersCustomerId = models.SearchSubscriptionsRequestAllOfFiltersCustomerId;
     export import SearchSubscriptionsRequestAllOfFiltersCustomerIdOperatorEnum = models.SearchSubscriptionsRequestAllOfFiltersCustomerIdOperatorEnum;
     export import SearchSubscriptionsRequestAllOfFiltersProductId = models.SearchSubscriptionsRequestAllOfFiltersProductId;
