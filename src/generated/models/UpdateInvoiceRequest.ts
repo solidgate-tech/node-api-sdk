@@ -20,13 +20,13 @@ import {
     CreateInvoiceRequestDiscountsInnerToJSON,
     CreateInvoiceRequestDiscountsInnerToJSONTyped,
 } from './CreateInvoiceRequestDiscountsInner';
-import type { CreateInvoiceRequestLineItemsInner } from './CreateInvoiceRequestLineItemsInner';
+import type { LineItemRequest } from './LineItemRequest';
 import {
-    CreateInvoiceRequestLineItemsInnerFromJSON,
-    CreateInvoiceRequestLineItemsInnerFromJSONTyped,
-    CreateInvoiceRequestLineItemsInnerToJSON,
-    CreateInvoiceRequestLineItemsInnerToJSONTyped,
-} from './CreateInvoiceRequestLineItemsInner';
+    LineItemRequestFromJSON,
+    LineItemRequestFromJSONTyped,
+    LineItemRequestToJSON,
+    LineItemRequestToJSONTyped,
+} from './LineItemRequest';
 import type { UpdateInvoiceRequestCustomer } from './UpdateInvoiceRequestCustomer';
 import {
     UpdateInvoiceRequestCustomerFromJSON,
@@ -52,7 +52,7 @@ export interface UpdateInvoiceRequest {
     /**
      * Line items applied to the invoice.
      */
-    line_items?: Array<CreateInvoiceRequestLineItemsInner>;
+    line_items?: Array<LineItemRequest>;
     /**
      * Discounts applied to the invoice using <a href="https://docs.solidgate.com/billing/manage-products/coupons/" target="_blank">coupons</a>.
      */
@@ -92,7 +92,7 @@ export function UpdateInvoiceRequestFromJSONTyped(json: any, ignoreDiscriminator
         
         'channel_id': json['channel_id'] == null ? undefined : json['channel_id'],
         'id': json['id'],
-        'line_items': json['line_items'] == null ? undefined : ((json['line_items'] as Array<any>).map(CreateInvoiceRequestLineItemsInnerFromJSON)),
+        'line_items': json['line_items'] == null ? undefined : ((json['line_items'] as Array<any>).map(LineItemRequestFromJSON)),
         'discounts': json['discounts'] === undefined ? undefined : json['discounts'] === null ? null : ((json['discounts'] as Array<any>).map(CreateInvoiceRequestDiscountsInnerFromJSON)),
         'notes': json['notes'] === undefined ? undefined : json['notes'] === null ? null : json['notes'],
         'due_at': json['due_at'] === undefined ? undefined : json['due_at'] === null ? null : (parseDateTime(json['due_at'])),
@@ -113,7 +113,7 @@ export function UpdateInvoiceRequestToJSONTyped(value?: UpdateInvoiceRequest | n
         
         'channel_id': value['channel_id'],
         'id': value['id'],
-        'line_items': value['line_items'] == null ? undefined : ((value['line_items'] as Array<any>).map(CreateInvoiceRequestLineItemsInnerToJSON)),
+        'line_items': value['line_items'] == null ? undefined : ((value['line_items'] as Array<any>).map(LineItemRequestToJSON)),
         'discounts': value['discounts'] == null ? undefined : ((value['discounts'] as Array<any>).map(CreateInvoiceRequestDiscountsInnerToJSON)),
         'notes': value['notes'],
         'due_at': value['due_at'] == null ? value['due_at'] : serializeDateTime(value['due_at']),

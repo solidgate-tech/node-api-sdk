@@ -20,13 +20,13 @@ import {
     CreateInvoiceRequestDiscountsInnerToJSON,
     CreateInvoiceRequestDiscountsInnerToJSONTyped,
 } from './CreateInvoiceRequestDiscountsInner';
-import type { CreateInvoiceRequestLineItemsInner } from './CreateInvoiceRequestLineItemsInner';
+import type { LineItemRequest } from './LineItemRequest';
 import {
-    CreateInvoiceRequestLineItemsInnerFromJSON,
-    CreateInvoiceRequestLineItemsInnerFromJSONTyped,
-    CreateInvoiceRequestLineItemsInnerToJSON,
-    CreateInvoiceRequestLineItemsInnerToJSONTyped,
-} from './CreateInvoiceRequestLineItemsInner';
+    LineItemRequestFromJSON,
+    LineItemRequestFromJSONTyped,
+    LineItemRequestToJSON,
+    LineItemRequestToJSONTyped,
+} from './LineItemRequest';
 
 /**
  * 
@@ -45,7 +45,7 @@ export interface CreateInvoiceRequest {
     /**
      * Line items applied to the invoice.
      */
-    line_items: Array<CreateInvoiceRequestLineItemsInner>;
+    line_items: Array<LineItemRequest>;
     /**
      * Merchant-defined reference for the invoice.
      */
@@ -86,7 +86,7 @@ export function CreateInvoiceRequestFromJSONTyped(json: any, ignoreDiscriminator
         
         'channel_id': json['channel_id'] == null ? undefined : json['channel_id'],
         'customer_id': json['customer_id'],
-        'line_items': ((json['line_items'] as Array<any>).map(CreateInvoiceRequestLineItemsInnerFromJSON)),
+        'line_items': ((json['line_items'] as Array<any>).map(LineItemRequestFromJSON)),
         'merchant_reference': json['merchant_reference'] == null ? undefined : json['merchant_reference'],
         'discounts': json['discounts'] == null ? undefined : ((json['discounts'] as Array<any>).map(CreateInvoiceRequestDiscountsInnerFromJSON)),
         'due_at': json['due_at'] == null ? undefined : (parseDateTime(json['due_at'])),
@@ -107,7 +107,7 @@ export function CreateInvoiceRequestToJSONTyped(value?: CreateInvoiceRequest | n
         
         'channel_id': value['channel_id'],
         'customer_id': value['customer_id'],
-        'line_items': ((value['line_items'] as Array<any>).map(CreateInvoiceRequestLineItemsInnerToJSON)),
+        'line_items': ((value['line_items'] as Array<any>).map(LineItemRequestToJSON)),
         'merchant_reference': value['merchant_reference'],
         'discounts': value['discounts'] == null ? undefined : ((value['discounts'] as Array<any>).map(CreateInvoiceRequestDiscountsInnerToJSON)),
         'due_at': value['due_at'] == null ? value['due_at'] : serializeDateTime(value['due_at']),

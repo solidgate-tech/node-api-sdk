@@ -14,11 +14,11 @@
 
 import { mapValues } from '../runtime';
 /**
- * 
+ * Line item with an existing product price.
  * @export
- * @interface CreateInvoiceRequestLineItemsInner
+ * @interface LineItemProductPrice
  */
-export interface CreateInvoiceRequestLineItemsInner {
+export interface LineItemProductPrice {
     /**
      * Unique <a href="https://docs.solidgate.com/billing/manage-products/prices/" target="_blank">product price</a> identifier.
      */
@@ -34,19 +34,19 @@ export interface CreateInvoiceRequestLineItemsInner {
 }
 
 /**
- * Check if a given object implements the CreateInvoiceRequestLineItemsInner interface.
+ * Check if a given object implements the LineItemProductPrice interface.
  */
-export function instanceOfCreateInvoiceRequestLineItemsInner(value: object): value is CreateInvoiceRequestLineItemsInner {
+export function instanceOfLineItemProductPrice(value: object): value is LineItemProductPrice {
     if (!('product_price_id' in value) || value['product_price_id'] === undefined) return false;
     if (!('quantity' in value) || value['quantity'] === undefined) return false;
     return true;
 }
 
-export function CreateInvoiceRequestLineItemsInnerFromJSON(json: any): CreateInvoiceRequestLineItemsInner {
-    return CreateInvoiceRequestLineItemsInnerFromJSONTyped(json, false);
+export function LineItemProductPriceFromJSON(json: any): LineItemProductPrice {
+    return LineItemProductPriceFromJSONTyped(json, false);
 }
 
-export function CreateInvoiceRequestLineItemsInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateInvoiceRequestLineItemsInner {
+export function LineItemProductPriceFromJSONTyped(json: any, ignoreDiscriminator: boolean): LineItemProductPrice {
     if (json == null) {
         return json;
     }
@@ -59,11 +59,11 @@ export function CreateInvoiceRequestLineItemsInnerFromJSONTyped(json: any, ignor
     };
 }
 
-export function CreateInvoiceRequestLineItemsInnerToJSON(json: any): CreateInvoiceRequestLineItemsInner {
-    return CreateInvoiceRequestLineItemsInnerToJSONTyped(json, false);
+export function LineItemProductPriceToJSON(json: any): LineItemProductPrice {
+    return LineItemProductPriceToJSONTyped(json, false);
 }
 
-export function CreateInvoiceRequestLineItemsInnerToJSONTyped(value?: CreateInvoiceRequestLineItemsInner | null, ignoreDiscriminator: boolean = false): any {
+export function LineItemProductPriceToJSONTyped(value?: LineItemProductPrice | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

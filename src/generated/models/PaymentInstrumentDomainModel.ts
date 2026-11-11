@@ -113,6 +113,7 @@ export type PaymentInstrumentDomainModelStatusEnum = typeof PaymentInstrumentDom
 export const PaymentInstrumentDomainModelRevocationReasonEnum = {
     MerchantInitiated: 'MERCHANT_INITIATED',
     SystemInitiated: 'SYSTEM_INITIATED',
+    TokenRevoked: 'TOKEN_REVOKED',
 } as const;
 export type PaymentInstrumentDomainModelRevocationReasonEnum = typeof PaymentInstrumentDomainModelRevocationReasonEnum[keyof typeof PaymentInstrumentDomainModelRevocationReasonEnum] | (string & {});
 

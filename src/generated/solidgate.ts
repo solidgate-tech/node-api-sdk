@@ -215,7 +215,6 @@ export namespace Solidgate {
     export import CreateInvoice422ResponseCodeEnum = models.CreateInvoice422ResponseCodeEnum;
     export import CreateInvoiceRequest = models.CreateInvoiceRequest;
     export import CreateInvoiceRequestDiscountsInner = models.CreateInvoiceRequestDiscountsInner;
-    export import CreateInvoiceRequestLineItemsInner = models.CreateInvoiceRequestLineItemsInner;
     export import CreateItemAntifraudList422Response = models.CreateItemAntifraudList422Response;
     export import CreateItemAntifraudList422ResponseCodeEnum = models.CreateItemAntifraudList422ResponseCodeEnum;
     export import CreateReportRequest = models.CreateReportRequest;
@@ -348,6 +347,8 @@ export namespace Solidgate {
     export import LineItemModel = models.LineItemModel;
     export import LineItemModelTax = models.LineItemModelTax;
     export import LineItemModelTaxModeEnum = models.LineItemModelTaxModeEnum;
+    export import LineItemProductPrice = models.LineItemProductPrice;
+    export import LineItemRequest = models.LineItemRequest;
     export import ListAntifraudListItemsRequest = models.ListAntifraudListItemsRequest;
     export import ListAntifraudListItemsRequestAllOfFilters = models.ListAntifraudListItemsRequestAllOfFilters;
     export import ListAntifraudListItemsRequestAllOfFiltersCreatedBy = models.ListAntifraudListItemsRequestAllOfFiltersCreatedBy;
