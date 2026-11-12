@@ -326,6 +326,8 @@ export * from './SubscriptionResumedEventModel';
 export * from './SubscriptionResumedEventModelData';
 export * from './SubscriptionScheduledForCancellationEventModel';
 export * from './SubscriptionScheduledForCancellationEventModelData';
+export * from './SubscriptionScheduledForCreationEventModel';
+export * from './SubscriptionScheduledForCreationEventModelData';
 export * from './SubscriptionScheduledForPauseEventModel';
 export * from './SubscriptionScheduledForPauseEventModelData';
 export * from './SubscriptionTrialActivatedEventModel';

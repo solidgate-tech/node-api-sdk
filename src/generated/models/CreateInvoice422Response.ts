@@ -44,6 +44,7 @@ export const CreateInvoice422ResponseCodeEnum = {
     ProductNotFound: 'PRODUCT_NOT_FOUND',
     PriceNotFound: 'PRICE_NOT_FOUND',
     CustomerNotFound: 'CUSTOMER_NOT_FOUND',
+    CustomerNotActive: 'CUSTOMER_NOT_ACTIVE',
     ProductNotActive: 'PRODUCT_NOT_ACTIVE',
     PriceNotActive: 'PRICE_NOT_ACTIVE',
     ProductNotOneTime: 'PRODUCT_NOT_ONE_TIME',

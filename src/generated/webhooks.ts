@@ -61,6 +61,8 @@ import {
     SubscriptionResumedEventModelFromJSON,
     type SubscriptionScheduledForCancellationEventModel,
     SubscriptionScheduledForCancellationEventModelFromJSON,
+    type SubscriptionScheduledForCreationEventModel,
+    SubscriptionScheduledForCreationEventModelFromJSON,
     type SubscriptionScheduledForPauseEventModel,
     SubscriptionScheduledForPauseEventModelFromJSON,
     type SubscriptionTrialActivatedEventModel,
@@ -103,6 +105,7 @@ export type SolidgateEvent =
     | SubscriptionRenewedEventModel
     | SubscriptionResumedEventModel
     | SubscriptionScheduledForCancellationEventModel
+    | SubscriptionScheduledForCreationEventModel
     | SubscriptionScheduledForPauseEventModel
     | SubscriptionTrialActivatedEventModel
     | SubscriptionUnpaidEventModel
@@ -143,6 +146,7 @@ const parsers: { readonly [eventType: string]: (json: any) => SolidgateEvent } =
     'SUBSCRIPTION_RENEWED': SubscriptionRenewedEventModelFromJSON,
     'SUBSCRIPTION_RESUMED': SubscriptionResumedEventModelFromJSON,
     'SUBSCRIPTION_SCHEDULED_FOR_CANCELLATION': SubscriptionScheduledForCancellationEventModelFromJSON,
+    'SUBSCRIPTION_SCHEDULED_FOR_CREATION': SubscriptionScheduledForCreationEventModelFromJSON,
     'SUBSCRIPTION_SCHEDULED_FOR_PAUSE': SubscriptionScheduledForPauseEventModelFromJSON,
     'SUBSCRIPTION_TRIAL_ACTIVATED': SubscriptionTrialActivatedEventModelFromJSON,
     'SUBSCRIPTION_UNPAID': SubscriptionUnpaidEventModelFromJSON,

@@ -651,6 +651,9 @@ export namespace Solidgate {
     export import SubscriptionScheduledForCancellationEventModel = models.SubscriptionScheduledForCancellationEventModel;
     export import SubscriptionScheduledForCancellationEventModelEventTypeEnum = models.SubscriptionScheduledForCancellationEventModelEventTypeEnum;
     export import SubscriptionScheduledForCancellationEventModelData = models.SubscriptionScheduledForCancellationEventModelData;
+    export import SubscriptionScheduledForCreationEventModel = models.SubscriptionScheduledForCreationEventModel;
+    export import SubscriptionScheduledForCreationEventModelEventTypeEnum = models.SubscriptionScheduledForCreationEventModelEventTypeEnum;
+    export import SubscriptionScheduledForCreationEventModelData = models.SubscriptionScheduledForCreationEventModelData;
     export import SubscriptionScheduledForPauseEventModel = models.SubscriptionScheduledForPauseEventModel;
     export import SubscriptionScheduledForPauseEventModelEventTypeEnum = models.SubscriptionScheduledForPauseEventModelEventTypeEnum;
     export import SubscriptionScheduledForPauseEventModelData = models.SubscriptionScheduledForPauseEventModelData;

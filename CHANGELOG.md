@@ -2,6 +2,11 @@
 
 All notable changes to this package are documented in this file.
 
+## [0.1.4] - 2026-11-12
+
+- [`POST /invoices/create`](https://api-docs.solidgate.com/api/v2/invoices/create-invoice):
+  - Added the new `CUSTOMER_NOT_ACTIVE` enum value to `code`.
+
 ## [0.1.3] - 2026-11-11
 
 - [`POST /customers/create`](https://api-docs.solidgate.com/api/v2/customers/create-customer):
