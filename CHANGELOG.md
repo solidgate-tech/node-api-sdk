@@ -2,6 +2,10 @@
 
 All notable changes to this package are documented in this file.
 
+## [0.1.5] - 2026-11-16
+
+- New [`POST /subscriptions/delete`](https://api-docs.solidgate.com/api/v2/subscriptions/delete-subscription): Delete subscription.
+
 ## [0.1.4] - 2026-11-12
 
 - [`POST /invoices/create`](https://api-docs.solidgate.com/api/v2/invoices/create-invoice):

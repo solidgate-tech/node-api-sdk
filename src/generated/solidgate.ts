@@ -102,6 +102,7 @@ export const PARAMS = {
     subscriptions: {
         cancelSubscription: ['body', 'header:Idempotency-Key'],
         createSubscription: ['body', 'header:Idempotency-Key'],
+        deleteSubscription: ['body', 'header:Idempotency-Key'],
         deleteSubscriptionCancellation: ['body', 'header:Idempotency-Key'],
         deleteSubscriptionPause: ['body', 'header:Idempotency-Key'],
         getSubscription: ['body'],
@@ -254,10 +255,13 @@ export namespace Solidgate {
     export import DefaultFallbackPolicyModel = models.DefaultFallbackPolicyModel;
     export import DeleteAntifraudListItemRequest = models.DeleteAntifraudListItemRequest;
     export import DeleteInvoiceRequest = models.DeleteInvoiceRequest;
+    export import DeleteSubscription422Response = models.DeleteSubscription422Response;
+    export import DeleteSubscription422ResponseCodeEnum = models.DeleteSubscription422ResponseCodeEnum;
     export import DeleteSubscriptionCancellation422Response = models.DeleteSubscriptionCancellation422Response;
     export import DeleteSubscriptionCancellation422ResponseCodeEnum = models.DeleteSubscriptionCancellation422ResponseCodeEnum;
     export import DeleteSubscriptionCancellationRequest = models.DeleteSubscriptionCancellationRequest;
     export import DeleteSubscriptionPauseRequest = models.DeleteSubscriptionPauseRequest;
+    export import DeleteSubscriptionRequest = models.DeleteSubscriptionRequest;
     export import DeleteWebhook422Response = models.DeleteWebhook422Response;
     export import DeleteWebhook422ResponseCodeEnum = models.DeleteWebhook422ResponseCodeEnum;
     export import DeleteWebhookRequest = models.DeleteWebhookRequest;
@@ -623,6 +627,9 @@ export namespace Solidgate {
     export import SubscriptionCreatedEventModel = models.SubscriptionCreatedEventModel;
     export import SubscriptionCreatedEventModelEventTypeEnum = models.SubscriptionCreatedEventModelEventTypeEnum;
     export import SubscriptionCreatedEventModelData = models.SubscriptionCreatedEventModelData;
+    export import SubscriptionDeletedEventModel = models.SubscriptionDeletedEventModel;
+    export import SubscriptionDeletedEventModelEventTypeEnum = models.SubscriptionDeletedEventModelEventTypeEnum;
+    export import SubscriptionDeletedEventModelData = models.SubscriptionDeletedEventModelData;
     export import SubscriptionDomainModel = models.SubscriptionDomainModel;
     export import SubscriptionDomainModelStatusEnum = models.SubscriptionDomainModelStatusEnum;
     export import SubscriptionDomainModelCancellationInfo = models.SubscriptionDomainModelCancellationInfo;

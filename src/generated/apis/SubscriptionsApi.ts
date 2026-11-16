@@ -39,6 +39,11 @@ import {
     CreateSubscriptionRequestToJSON,
 } from '../models/CreateSubscriptionRequest';
 import {
+    type DeleteSubscription422Response,
+    DeleteSubscription422ResponseFromJSON,
+    DeleteSubscription422ResponseToJSON,
+} from '../models/DeleteSubscription422Response';
+import {
     type DeleteSubscriptionCancellation422Response,
     DeleteSubscriptionCancellation422ResponseFromJSON,
     DeleteSubscriptionCancellation422ResponseToJSON,
@@ -53,6 +58,11 @@ import {
     DeleteSubscriptionPauseRequestFromJSON,
     DeleteSubscriptionPauseRequestToJSON,
 } from '../models/DeleteSubscriptionPauseRequest';
+import {
+    type DeleteSubscriptionRequest,
+    DeleteSubscriptionRequestFromJSON,
+    DeleteSubscriptionRequestToJSON,
+} from '../models/DeleteSubscriptionRequest';
 import {
     type GetSubscriptionRequest,
     GetSubscriptionRequestFromJSON,
@@ -145,6 +155,17 @@ export interface CreateSubscriptionOperationRequest {
      * 
      */
     createSubscriptionRequest: CreateSubscriptionRequest;
+    /**
+     * Key that makes the request safe to retry. Reusing the key within 24 hours returns the original result instead of repeating the request.
+     */
+    idempotencyKey?: string;
+}
+
+export interface DeleteSubscriptionOperationRequest {
+    /**
+     * 
+     */
+    deleteSubscriptionRequest: DeleteSubscriptionRequest;
     /**
      * Key that makes the request safe to retry. Reusing the key within 24 hours returns the original result instead of repeating the request.
      */
@@ -341,6 +362,66 @@ export class SubscriptionsApi extends runtime.BaseAPI {
     async createSubscription(createSubscriptionRequest: CreateSubscriptionRequest, idempotencyKey?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SubscriptionDomainModel> {
         const response = await this.createSubscriptionRaw({ createSubscriptionRequest: createSubscriptionRequest, idempotencyKey: idempotencyKey }, initOverrides);
         return await response.value();
+    }
+
+    /**
+     * Creates request options for deleteSubscription without sending the request
+     */
+    async deleteSubscriptionRequestOpts(requestParameters: DeleteSubscriptionOperationRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['deleteSubscriptionRequest'] == null) {
+            throw new runtime.RequiredError(
+                'deleteSubscriptionRequest',
+                'Required parameter "deleteSubscriptionRequest" was null or undefined when calling deleteSubscription().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (requestParameters['idempotencyKey'] != null) {
+            headerParameters['Idempotency-Key'] = String(requestParameters['idempotencyKey']);
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("bearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+
+        let urlPath = `/subscriptions/delete`;
+
+        return {
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: DeleteSubscriptionRequestToJSON(requestParameters['deleteSubscriptionRequest']),
+        };
+    }
+
+    /**
+     * Deletes a <a href=\"https://docs.solidgate.com/billing/subscriptions/subscriptions-2.0/\" target=\"_blank\">subscription</a> scheduled to start at a future date. Only a subscription in the `CREATED` status with `start_scheduled_at` set can be deleted.
+     * Delete subscription
+     */
+    async deleteSubscriptionRaw(requestParameters: DeleteSubscriptionOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.deleteSubscriptionRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     * Deletes a <a href=\"https://docs.solidgate.com/billing/subscriptions/subscriptions-2.0/\" target=\"_blank\">subscription</a> scheduled to start at a future date. Only a subscription in the `CREATED` status with `start_scheduled_at` set can be deleted.
+     * Delete subscription
+     */
+    async deleteSubscription(deleteSubscriptionRequest: DeleteSubscriptionRequest, idempotencyKey?: string, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.deleteSubscriptionRaw({ deleteSubscriptionRequest: deleteSubscriptionRequest, idempotencyKey: idempotencyKey }, initOverrides);
     }
 
     /**
