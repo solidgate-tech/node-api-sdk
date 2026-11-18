@@ -2,6 +2,32 @@
 
 All notable changes to this package are documented in this file.
 
+## [0.2.0] - 2026-11-18
+
+- **Breaking:** [`POST /antifraud-lists/create-item`](https://api-docs.solidgate.com/api/v2/antifraud-lists/create-item-antifraud-list):
+  - **Breaking:** The `list_id` request property's maxLength was decreased to `100`.
+  - The `id` response property's maxLength was decreased from `250` to `100` for the response status `200`.
+  - The `list_id` response property's maxLength was decreased from `250` to `100` for the response status `200`.
+- **Breaking:** [`POST /antifraud-lists/delete-item`](https://api-docs.solidgate.com/api/v2/antifraud-lists/delete-item-antifraud-list):
+  - **Breaking:** The `id` request property's maxLength was decreased to `100`.
+- **Breaking:** [`POST /antifraud-lists/get`](https://api-docs.solidgate.com/api/v2/antifraud-lists/get-antifraud-list):
+  - **Breaking:** The `id` request property's maxLength was decreased to `100`.
+  - The `id` response property's maxLength was decreased from `250` to `100` for the response status `200`.
+- **Breaking:** [`POST /antifraud-lists/update`](https://api-docs.solidgate.com/api/v2/antifraud-lists/update-antifraud-list):
+  - **Breaking:** The `id` request property's maxLength was decreased to `100`.
+  - The `id` response property's maxLength was decreased from `250` to `100` for the response status `200`.
+- [`POST /antifraud-lists/list-item`](https://api-docs.solidgate.com/api/v2/antifraud-lists/list-item-antifraud-list):
+  - The `allOf[subschema #1]/list_id` request property's maxLength was decreased to `100`.
+  - The `allOf[subschema #1]/items/items/id` response property's maxLength was decreased from `250` to `100` for the response status `200`.
+  - The `allOf[subschema #1]/items/items/list_id` response property's maxLength was decreased from `250` to `100` for the response status `200`.
+- `POST webhook:AntifraudResultCreated`:
+  - The `allOf[subschema #2]/data/antifraud_result/matched_lists/items/list_id` request property's maxLength was decreased to `100`.
+  - The `allOf[subschema #2]/data/antifraud_result/matched_lists/items/list_item_id` request property's maxLength was decreased to `100`.
+- [`POST /antifraud-lists/create`](https://api-docs.solidgate.com/api/v2/antifraud-lists/create-antifraud-list):
+  - The `id` response property's maxLength was decreased from `250` to `100` for the response status `200`.
+- [`POST /antifraud-lists/list`](https://api-docs.solidgate.com/api/v2/antifraud-lists/list-antifraud-list):
+  - The `allOf[subschema #1]/items/items/id` response property's maxLength was decreased from `250` to `100` for the response status `200`.
+
 ## [0.1.5] - 2026-11-16
 
 - New [`POST /subscriptions/delete`](https://api-docs.solidgate.com/api/v2/subscriptions/delete-subscription): Delete subscription.
